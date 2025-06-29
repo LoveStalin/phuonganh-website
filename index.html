@@ -9,6 +9,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-direction: column;
             height: 100vh;
             margin: 0;
             background-color: #fff0f5;
@@ -34,9 +35,8 @@
         img {
             max-height: 400px;
             border-radius: 10px;
-            margin-top: 30px; /* Hạ ảnh xuống một chút */
+            margin-top: 30px;
         }
-        /* Trái tim xung quanh */
         .heart {
             position: absolute;
             font-size: 24px;
@@ -52,11 +52,44 @@
             50% { transform: translateY(-10px); opacity: 0.7; }
             100% { transform: translateY(0); opacity: 1; }
         }
+
+        .music-toggle {
+            margin-top: 10px;
+            padding: 8px 20px;
+            background-color: #ffaec9;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .audio-section {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .audio-section audio::-webkit-media-controls-panel {
+            background-color: #ffaec9;
+            border-radius: 50%;
+        }
+
+        .audio-section audio {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: #ffaec9;
+        }
+
+        .audio-section p {
+            font-weight: bold;
+            margin-top: 8px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Các trái tim bay quanh bức thư -->
         <div class="heart">❤️</div>
         <div class="heart">💕</div>
         <div class="heart">💖</div>
@@ -67,16 +100,47 @@
             <p>
                 Có một người luôn ở trong tim tớ.<br>
                 Cậu là Phương Anh – người đã khiến tớ trưởng thành hơn từng ngày.<br>
-                Dù tương lai có ra sao, tớ vẫn luôn biết ơn  vì tất cả.
+                Dù tương lai có ra sao, tớ vẫn luôn biết ơn vì tất cả.
                 Vì cậu mà tớ đã học được rất nhiều điều.
-                Phương Anh à!Tớ yêu cậu rất nhiều!
-                Dù sao thì,chúc cậu một ngày sinh nhật đáng nhớ nhé!
+                Phương Anh à! Tớ yêu cậu rất nhiều!
+                Dù sao thì, chúc cậu một ngày sinh nhật đáng nhớ nhé!
                 Tớ chúc cậu luôn học giỏi và thành công trong tương lai.
-                Xuân Thành tớ đây sẽ luôn yêu thương và bảo vệ cậu.Vì cậu-Tớ nguyện làm tất cả.💕💕💕(❁´◡`❁)
+                Xuân Thành tớ đây sẽ luôn yêu thương và bảo vệ cậu. Vì cậu - tớ nguyện làm tất cả.💕💕💕(❁´◡`❁)
             </p>
         </div>
 
         <img src="phuonganhdangyeu.png" alt="Phương Anh chỉ tay">
     </div>
+
+    <!-- Nút bật/tắt nhạc nền -->
+    <button class="music-toggle" onclick="toggleMusic()">🔊 Bật nhạc</button>
+
+    <!-- Nhạc nền -->
+    <audio id="bg-music" autoplay loop>
+        <source src="audio/Honeypie.mp3" type="audio/mp3">
+    </audio>
+
+    <!-- Ghi âm của mày -->
+    <div class="audio-section">
+        <audio controls>
+            <source src="audio/ghiamdanhchoPa.m4a" type="audio/mp3">
+        </audio>
+        <p>Nghe đi chị yêu 😘</p>
+    </div>
+
+    <script>
+        const bgMusic = document.getElementById("bg-music");
+        const toggleBtn = document.querySelector(".music-toggle");
+
+        function toggleMusic() {
+            if (bgMusic.paused) {
+                bgMusic.play();
+                toggleBtn.innerText = "🔈 Tắt nhạc";
+            } else {
+                bgMusic.pause();
+                toggleBtn.innerText = "🔊 Bật nhạc";
+            }
+        }
+    </script>
 </body>
 </html>
