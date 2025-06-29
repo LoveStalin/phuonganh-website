@@ -85,31 +85,90 @@
             font-weight: bold;
             margin-top: 8px;
         }
-
-        /* MEDIA QUERY CHO MOBILE */
+        
         @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                align-items: center;
-            }
+    .container {
+        flex-direction: row;      /* Giữ hàng ngang */
+        flex-wrap: wrap;          /* Cho phép xuống dòng nếu chật */
+        justify-content: center;
+        align-items: flex-end;    /* Căn đáy ảnh với thư */
+        gap: 10px;                /* Nhỏ gap lại để khít hơn */
+    }
 
-            .letter, img {
-                max-width: 90%;
-            }
+    .letter, img {
+        max-width: 90%;
+    }
 
-            .music-toggle {
-                margin-top: 15px;
-            }
+    img {
+        margin-top: 0;            /* Không đẩy ảnh xuống nữa */
+        max-height: 300px;        /* Cho ảnh nhỏ lại vừa với mobile */
+    }
 
-            .audio-section audio {
-                width: 100px;
-                height: 100px;
-            }
+    .audio-section {
+        margin-top: 10px;
+    }
 
-            .letter p {
-                font-size: 16px;
-            }
-        }
+    audio {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+    }
+
+    p {
+        font-size: 16px;
+    }
+}
+/* Popup overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 192, 203, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Nội dung popup */
+.popup-content {
+  background: white;
+  padding: 30px 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+/* Nút "OK dễ thương" */
+.popup-content button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #ff69b4;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Trái tim bay */
+.heart-floating {
+  position: absolute;
+  font-size: 24px;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: floatHeart 3s infinite ease-in-out;
+}
+
+@keyframes floatHeart {
+  0% { transform: translateX(-50%) translateY(0); opacity: 1; }
+  50% { transform: translateX(-50%) translateY(-15px); opacity: 0.7; }
+  100% { transform: translateX(-50%) translateY(0); opacity: 1; }
+}
     </style>
 </head>
 <body>
@@ -130,7 +189,7 @@
                 Dù sao thì, chúc cậu một ngày sinh nhật đáng nhớ nhé!<br>
                 Tớ chúc cậu luôn học giỏi và thành công trong tương lai.<br>
                 Xuân Thành tớ đây sẽ luôn yêu thương và bảo vệ cậu.<br>
-                Vì cậu - tớ nguyện làm tất cả.💕💕💕(❁´◡`❁)
+                Vì cậu - tớ nguyện làm tất cả.💕💕💕(❁´◡❁)
             </p>
         </div>
 
@@ -149,20 +208,35 @@
         </audio>
         <p>Nghe đi chị yêu 😘</p>
     </div>
+<!-- Popup đẹp -->
+<div id="popup" class="popup-overlay">
+  <div class="popup-content">
+    <h2>🎉 Hello Phương Anh 🎉</h2>
+    <p>Xuân Thành đây!<br>Chúc cậu sinh nhật thật hạnh phúc nhé 💖.Bức thư này sẽ đặc biệt hơn khi cậu mở đúng ngày 4/7 áaaa</p>
+    <button onclick="closePopup()">Ogeeee</button>
+    <div class="heart-floating">❤️</div>
+  </div>
+</div>
+ <script>
+  const bgMusic = document.getElementById("bg-music");
+  const toggleBtn = document.querySelector(".music-toggle");
 
-    <script>
-        const bgMusic = document.getElementById("bg-music");
-        const toggleBtn = document.querySelector(".music-toggle");
+  function toggleMusic() {
+    if (bgMusic.paused) {
+      bgMusic.play();
+      toggleBtn.innerText = "🔈 Tắt nhạc";
+    } else {
+      bgMusic.pause();
+      toggleBtn.innerText = "🔊 Bật nhạc";
+    }
+  }
 
-        function toggleMusic() {
-            if (bgMusic.paused) {
-                bgMusic.play();
-                toggleBtn.innerText = "🔈 Tắt nhạc";
-            } else {
-                bgMusic.pause();
-                toggleBtn.innerText = "🔊 Bật nhạc";
-            }
-        }
-    </script>
-</body>
-</html>
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+  }
+
+  // Mở popup khi vào trang
+  window.onload = function() {
+    document.getElementById("popup").style.display = "flex";
+  };
+</script>
