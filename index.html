@@ -169,6 +169,24 @@
   50% { transform: translateX(-50%) translateY(-15px); opacity: 0.7; }
   100% { transform: translateX(-50%) translateY(0); opacity: 1; }
 }
+/* Hiệu ứng fade in/out */
+.fade-out {
+  animation: fadeOut 0.6s forwards;
+}
+
+.fade-in {
+  animation: fadeIn 0.6s forwards;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.95); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: scale(1.05); }
+  100% { opacity: 1; transform: scale(1); }
+}
     </style>
 </head>
 <body>
@@ -208,15 +226,30 @@
         </audio>
         <p>Nghe đi chị yêu 😘</p>
     </div>
-<!-- Popup đẹp -->
 <div id="popup" class="popup-overlay">
   <div class="popup-content">
-    <h2>🎉 Hello Phương Anh 🎉</h2>
-    <p>Xuân Thành đây!<br>Chúc cậu sinh nhật thật hạnh phúc nhé 💖.Bức thư này sẽ đặc biệt hơn khi cậu mở đúng ngày 4/7 áaaa</p>
-    <button onclick="closePopup()">Ogeeee</button>
-    <div class="heart-floating">❤️</div>
+    <div id="popup-page-1">
+      <h2>🎉 Hello Phương Anh 🎉</h2>
+      <p>Xuân Thành đây!<br>Chúc cậu sinh nhật thật hạnh phúc nhé 💖Bức thư này sẽ hay hơn nếu cậu mở đúng ngày 4/7 áaaa💕</p>
+      <button onclick="showNextPopupPage()">Tiếp ➤</button>
+      <div class="heart-floating">❤️</div>
+    </div>
+
+    <div id="popup-page-2" style="display: none;">
+      <h2>💌 Một điều muốn nói...</h2>
+      <p>
+        Trang Web này chỉ dành riêng cho cậu thôii.<br>
+        Trang Web này bao gồm lời mà tớ muốn nói với cậu,<br>
+        có nhạc Honeypie (tớ không biết nên dùng nhạc nào 😁)<br>
+        và một đoạn ghi âm 3p của tớ dành cho cậu.<br>
+        Tớ chỉ có thể làm được như thế này trong 2 ngày thui, cậu thông cảm nha 😭🙏
+      </p>
+      <button onclick="closePopup()">Ogeeee </button>
+      <div class="heart-floating">💕</div>
+    </div>
   </div>
 </div>
+
  <script>
   const bgMusic = document.getElementById("bg-music");
   const toggleBtn = document.querySelector(".music-toggle");
@@ -234,6 +267,29 @@
   function closePopup() {
     document.getElementById("popup").style.display = "none";
   }
+
+  // Mở popup khi vào trang
+  window.onload = function() {
+    document.getElementById("popup").style.display = "flex";
+  };
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+  }
+
+ function showNextPopupPage() {
+  const page1 = document.getElementById("popup-page-1");
+  const page2 = document.getElementById("popup-page-2");
+
+  // Thêm hiệu ứng fade out cho trang 1
+  page1.classList.add("fade-out");
+
+  // Sau khi xong hiệu ứng, ẩn trang 1 và hiện trang 2 với fade in
+  setTimeout(() => {
+    page1.style.display = "none";
+    page2.style.display = "block";
+    page2.classList.add("fade-in");
+  }, 600); // Thời gian khớp với animation: 0.6s
+}
 
   // Mở popup khi vào trang
   window.onload = function() {
