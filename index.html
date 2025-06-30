@@ -382,49 +382,62 @@ function declineLove() {
 function postComment() {
   const name = document.getElementById("comment-name").value.trim() || "Ẩn danh";
   const message = document.getElementById("comment-message").value.trim();
-  const list = document.getElementById("comment-list");
 
-  if (message === "") {
+  if (!message) {
     alert("Bạn chưa nhập lời nhắn!");
     return;
   }
 
-  const commentData = { name, message };
-  let allComments = [];
-try {
-  allComments = JSON.parse(localStorage.getItem("comments")) || [];
-} catch (e) {
-  localStorage.removeItem("comments");
-}
-  allComments.unshift(commentData);
-  localStorage.setItem("comments", JSON.stringify(allComments));
-
-  renderComments();
-  document.getElementById("comment-message").value = "";
-  document.getElementById("comment-name").value = "";
+  fetch("https://comment-cho-pa.onrender.com/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ name, message })
+  })
+    .then(response => {
+      if (!response.ok) throw new Error("Gửi thất bại");
+      return response.json();
+    })
+    .then(() => {
+      document.getElementById("comment-name").value = "";
+      document.getElementById("comment-message").value = "";
+      renderComments();
+    })
+    .catch(error => {
+      alert("Lỗi khi gửi lời nhắn 😭: " + error.message);
+    });
 }
 
 function renderComments() {
   const list = document.getElementById("comment-list");
-  list.innerHTML = "";
+  list.innerHTML = "<p>Đang tải comment...</p>";
 
-  const allComments = JSON.parse(localStorage.getItem("comments")) || [];
-
-  allComments.forEach(({ name, message }) => {
-    const commentBox = document.createElement("div");
-    commentBox.style.background = "#fff0f5";
-    commentBox.style.border = "1px solid #ffaec9";
-    commentBox.style.padding = "15px";
-    commentBox.style.marginBottom = "10px";
-    commentBox.style.borderRadius = "12px";
-    commentBox.style.boxShadow = "0 2px 5px rgba(0,0,0,0.1)";
-    commentBox.innerHTML = `
-  <div style="color: #e75480; font-weight: bold;">${name}</div>
-  <div style="margin-top: 5px;">${message}</div>
-`;
-    list.appendChild(commentBox);
-  });
+  fetch("https://comment-cho-pa.onrender.com/")
+    .then(res => res.json())
+    .then(comments => {
+      list.innerHTML = "";
+      comments.forEach(({ name, message }) => {
+        const commentBox = document.createElement("div");
+        commentBox.style.background = "#fff0f5";
+        commentBox.style.border = "1px solid #ffaec9";
+        commentBox.style.padding = "15px";
+        commentBox.style.marginBottom = "10px";
+        commentBox.style.borderRadius = "12px";
+        commentBox.style.boxShadow = "0 2px 5px rgba(0,0,0,0.1)";
+        commentBox.innerHTML = `
+          <div style="color: #e75480; font-weight: bold;">${name}</div>
+          <div style="margin-top: 5px;">${message}</div>
+        `;
+        list.appendChild(commentBox);
+      });
+    })
+    .catch(err => {
+      list.innerHTML = "<p>Không thể tải comment 😢</p>";
+      console.error(err);
+    });
 }
+
 // Gọi khi load trang
 window.onload = function () {
   renderComments();
