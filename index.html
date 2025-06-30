@@ -413,7 +413,7 @@ function renderComments() {
   const list = document.getElementById("comment-list");
   list.innerHTML = "<p>Đang tải comment...</p>";
 
-  fetch("https://comment-cho-pa.onrender.com/")
+  fetch("https://comment-cho-pa.onrender.com/comments")
     .then(res => res.json())
     .then(comments => {
       list.innerHTML = "";
