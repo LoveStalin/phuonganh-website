@@ -353,7 +353,6 @@ window.addEventListener("load", typeLetter);
 window.onload = function () {
   document.getElementById("popup").style.display = "flex";
 };
-setTimeout(showJuly4Popup, 1000);
 
 function closePopup() {
   document.getElementById("popup").style.display = "none";
@@ -434,18 +433,6 @@ window.onload = function () {
 };
 const formattedMessage = message.replace(/\n/g, "<br>");
 commentBox.innerHTML = `<strong>${name}</strong><br>${formattedMessage}`;
-function showJuly4Popup() {
-  document.getElementById("popup-july4").style.display = "flex";
-}
-
-function redirectTo404() {
-  document.body.innerHTML = `
-    <div style="text-align: center; margin-top: 20%;">
-      <h1 style="font-size: 50px;">404 Not Found</h1>
-      <p>Trang bạn tìm không còn ở đây nữa 😢</p>
-    </div>
-  `;
-}
 </script>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P579482N"
@@ -465,13 +452,5 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div id="comment-list" style="margin-top: 30px; text-align: left;"></div>
 </div>
-<!-- Popup ngày 4/7 -->
-<div id="popup-july4" class="popup-overlay" style="display: none;">
-  <div class="popup-content">
-    <img src="your-image.jpg" alt="Ảnh dễ thương" style="max-width: 100%; border-radius: 12px;" />
-    <p style="margin-top: 15px;">Quay lại vào ngày <strong>4/7</strong> nha 😘</p>
-    <button onclick="redirectTo404()">OK</button>
-  </div>
-</div>
-</body>
+</body>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 </html>
