@@ -174,7 +174,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 </head>
 <body>
-
+<body>
+<!-- 💘 KHÓA BẢO MẬT CHO PHƯƠNG ANH 💘 -->
+<div id="lock-screen" style="position:fixed; top:0; left:0; width:100%; height:100vh; background:#fff0f5; z-index:99999; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+  <h2 style="color:#d6336c;">🔒 Web dành riêng cho người đặc biệt</h2>
+  <p>Họ và Tên đầy đủ của cậu là gì? (Ví dụ: Nguyễn Xuân Thành)</p>
+  <input id="nameInput" type="text" placeholder="Nhập tên đầy đủ..." style="padding: 10px; border-radius: 8px; border: 1px solid #ccc; margin-top:10px; width: 80%; max-width: 300px;">
+  <button onclick="unlockWebsite()" style="margin-top:15px; padding:10px 20px; background:#ff69b4; color:white; border:none; border-radius:8px; cursor:pointer;">Mở khoá</button>
+</div>
 <div class="container">
   <div class="heart">❤️</div>
   <div class="heart">💕</div>
@@ -560,7 +567,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- Nút nghe audio tâm sự -->
 <div style="position: fixed; bottom: 15px; right: 15px; z-index: 1000;">
-  <button onclick="toggleAudio()" style="padding: 10px 20px; background: #ffccdd; border: none; border-radius: 10px;">🎧 Nghe tâm sự</button>
+  <button onclick="toggleAudio()" style="padding: 10px 20px; background: #ffccdd; border: none; border-radius: 10px;">🎧 Nghe tâm sự audio số 2</button>
 </div>
 
 <audio id="confession-audio" src="audio/ghiam2danhchoPa.mp3"></audio>
@@ -586,6 +593,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   function closeInvitePopup() {
     document.getElementById("invite-popup").style.display = "none";
+  }
+  function unlockWebsite() {
+    const input = document.getElementById("nameInput").value.trim().toLowerCase();
+    const correctName = "đỗ phạm phương anh"; // hoặc "nguyễn phương anh" tuỳ mày chọn
+
+    if (input === correctName) {
+      document.getElementById("lock-screen").style.display = "none";
+    } else {
+      alert("Địt mẹ, cút ngay khỏi web của tao! Web này chỉ dành cho người đặc biệt!");
+    }
   }
 </script>
 </body>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
