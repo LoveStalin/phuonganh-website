@@ -195,6 +195,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       Vì cậu - tớ nguyện làm tất cả.💕💕💕(❁´◡`❁)
     </p>
   </div>
+<!-- Lời mời đặc biệt -->
+<div id="special-invite" onclick="showInvitePopup()" style="cursor: pointer; text-align: center; margin-top: 30px;">
+  <div style="font-size: 50px;">🎟️</div>
+  <div style="font-size: 20px; color: #e75480; font-weight: bold;">Lời mời đặc biệt!</div>
+</div>
+
+<!-- Popup -->
+<div id="invite-popup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999; justify-content:center; align-items:center;">
+  <div style="background:#fff0f5; padding:30px; border-radius:20px; max-width:90%; width:400px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.2);">
+    <h2 style="color:#d6336c;">🎬 Lời mời Đặc Biệt!</h2>
+    <p style="margin-top: 10px; font-size: 16px;">
+      Phương Anh à!<br>Tớ muốn mời cậu đi xem phim với tớ...<br><br>
+      Bộ phim và thời gian xem phim(sau ngày 09/07) thì sẽ phụ thuộc vào sự lựa chọn của cậu nha~~~<br>
+      Còn tớ thì sẽ lo chuyện tiền nong và vé xem phim và các khoản tiền phụ!<br><br>
+      Nếu cậu đồng ý, hãy gửi lời nhắn nhủ ở website này nha!<br>
+      Nếu cậu từ chối, cậu có thể gửi lời lên website này, hoặc không gửi nếu cậu ngại.<br><br>
+      <strong>09/07</strong> tớ sẽ lên web kiểm tra để xem câu trả lời của cậu ạ!<br>
+      Cảm ơn cậu rất nhiều!
+    </p>
+    <button onclick="closeInvitePopup()" style="margin-top:20px; padding:10px 20px; background:#ff69b4; color:white; border:none; border-radius:8px; cursor:pointer;">OK 🥺</button>
+  </div>
+</div>
 
   <img src="phuonganhdangyeu.png" alt="Phương Anh chỉ tay">
 </div>
@@ -217,11 +239,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="popup-content" id="popup-page-1">
     <h2>🎉 Chào Mừng Phương Anh 🎉</h2>
     <p>Xuân Thành đây!<br>Chúc cậu có ngày sinh nhật thật hạnh phúc và đáng nhớ nha 💖<br>
-      Tớ đã dành cả 2 ngày chỉ để làm trang web nhỏ này cho cậu đó nha hihi<br>
+      Tớ đã dành cả ngày lẫn  chỉ để làm trang web nhỏ này cho cậu đó nha hihi<br>
       Không phải vì tớ rảnh đâu, mà là vì…<br>
       Tớ muốn làm ra một thứ gì đó chỉ dành riêng cho Phương Anh thôi (｡♥‿♥｡)<br>
       Và tớ cũng mong cậu hiểu rằng...<br>
-      Tớ yêu thương cậu đến nhường nào💕💕</p>
+      Tớ yêu thương cậu đến nhường nào,cũng như chuyện...Phương Anh đặc biết đến nhường nào💕💕</p>
     <button onclick="showNextPopupPage()">Tiếp ➤</button>
     <div class="heart-floating">❤️</div>
   </div>
@@ -536,12 +558,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   document.getElementById("day-counter").innerText = `Đã ${daysPassed} ngày kể từ lúc tớ công khai thích cậu... 😍`;
 </script>
 
-<!-- PHẦN 2: AUDIO TÂM SỰ (Nghe điều tớ muốn nói) -->
-<div style="position: fixed; bottom: 20px; right: 20px;">
-  <button onclick="document.getElementById('confession-audio').play()" style="background: #fff0f5; border: 2px solid #ff69b4; color: #d63384; font-weight: bold; border-radius: 50px; padding: 10px 20px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
-    Audio số 2 nè,ấn vào đây nha 🎧
-  </button>
-  <audio id="confession-audio" src="audio/ghiam2danhchoPa.mp3"></audio> <!-- Đường dẫn đến file audio -->
+  <!-- Nút nghe audio tâm sự -->
+<div style="position: fixed; bottom: 15px; right: 15px; z-index: 1000;">
+  <button onclick="toggleAudio()" style="padding: 10px 20px; background: #ffccdd; border: none; border-radius: 10px;">🎧 Nghe tâm sự</button>
+</div>
+
+<audio id="confession-audio" src="audio/ghiam2danhchoPa.mp3"></audio>
+
+<script>
+  let isPlaying = false;
+
+  function toggleAudio() {
+    const audio = document.getElementById("confession-audio");
+    if (isPlaying) {
+      audio.pause();
+    } else {
+      audio.play();
+    }
+    isPlaying = !isPlaying;
+  }
+</script>
 </div>
 </body>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 </html>
