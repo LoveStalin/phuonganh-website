@@ -224,8 +224,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <button onclick="closeInvitePopup()" style="margin-top:20px; padding:10px 20px; background:#ff69b4; color:white; border:none; border-radius:8px; cursor:pointer;">OK 🥺</button>
   </div>
 </div>
-
-  <img src="phuonganhdangyeu.png" alt="Phương Anh chỉ tay">
+<div style="text-align: center; margin-top: 20px;">
+  <div id="greeting-message" style="font-size: 20px; color: #ff66a3; font-weight: bold; margin-bottom: 10px;"></div>
+  <img src="phuonganhdangyeu.png" alt="Ảnh Phương Anh" style="width: 220px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
 </div>
 
 <button class="music-toggle" onclick="toggleMusic()">🔊 Bật nhạc</button>
@@ -604,6 +605,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       alert("Địt mẹ, cút ngay khỏi web của tao! Web này chỉ dành cho người đặc biệt!");
     }
   }
+  function showGreeting() {
+    const hour = new Date().getHours(); // Lấy giờ hiện tại (0-23)
+    const messageBox = document.getElementById("greeting-message");
+    let message = "";
+
+    if (hour >= 21 || hour < 5) {
+      message = "Chúc Phương Anh ngủ ngon 💤💤💤";
+    } else if (hour >= 5 && hour < 12) {
+      message = "Chào buổi sáng, Phương Anh đáng yêu ☀️";
+    } else if (hour >= 12 && hour < 17) {
+      message = "Chúc Phương Anh có một buổi chiều zui zẻ nha! Có gì ngắm hoàng hôn cho yêu đời hehe!";
+    } else if (hour >= 17 && hour < 21) {
+      message = "Chào buổi tối, Phương Anh! Bữa tối quan trọng lắm đó, nhớ ăn đấy nha!!!";
+    }
+
+    messageBox.innerText = message;
+  }
+
+  // Gọi hàm khi trang được tải
+  window.onload = showGreeting;
 </script>
 </body>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 </html>
