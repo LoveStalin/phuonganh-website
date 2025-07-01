@@ -209,7 +209,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <audio controls>
     <source src="audio/ghiamdanhchoPa.mp3" type="audio/mp3">
   </audio>
-  <p>Nghe đi chị yêu 😘</p>
+  <p>Nghe đi chị yêu,audio số 1 nhaa 😘</p>
 </div>
 
 <!-- Popup trang 1 -->
@@ -524,6 +524,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </button>
 
   <div id="comment-list" style="margin-top: 30px; text-align: left;"></div>
+</div>
+<!-- PHẦN 1: THỜI GIAN TÌNH CẢM (Đếm ngày đã thích Phương Anh) -->
+<div id="love-timer" style="position: fixed; bottom: 20px; left: 20px; background: #ffe4ec; padding: 12px 20px; border-radius: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); font-family: 'Segoe UI', sans-serif; font-weight: bold; color: #d63384; font-size: 16px;">
+  <span id="day-counter">...</span>
+</div>
+<script>
+  const firstLoveDate = new Date("2024-06-04"); // NGÀY BẮT ĐẦU THÍCH
+  const today = new Date();
+  const daysPassed = Math.floor((today - firstLoveDate) / (1000 * 60 * 60 * 24));
+  document.getElementById("day-counter").innerText = `Đã ${daysPassed} ngày kể từ lúc tớ công khai thích cậu... 😍`;
+</script>
+
+<!-- PHẦN 2: AUDIO TÂM SỰ (Nghe điều tớ muốn nói) -->
+<div style="position: fixed; bottom: 20px; right: 20px;">
+  <button onclick="document.getElementById('confession-audio').play()" style="background: #fff0f5; border: 2px solid #ff69b4; color: #d63384; font-weight: bold; border-radius: 50px; padding: 10px 20px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+    Audio số 2 nè,ấn vào đây nha 🎧
+  </button>
+  <audio id="confession-audio" src="audio/ghiam2danhchoPa.mp3"></audio> <!-- Đường dẫn đến file audio -->
 </div>
 </body>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 </html>
