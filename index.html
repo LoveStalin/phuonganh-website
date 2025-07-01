@@ -155,6 +155,53 @@
       0% { opacity: 0; transform: scale(1.05); }
       100% { opacity: 1; transform: scale(1); }
     }
+    .top-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.photo-box {
+  position: relative;
+  text-align: center;
+}
+
+.pa-image {
+  height: 430px;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.greeting-text {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 18px;
+  color: #ff66a3;
+  font-weight: bold;
+}
+
+/* Responsive trên điện thoại */
+@media (max-width: 768px) {
+  .top-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pa-image {
+    height: auto;
+    width: 80vw;
+  }
+
+  .greeting-text {
+    top: -20px;
+    font-size: 16px;
+  }
+}
   </style>
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LGJH4TYT65"></script>
@@ -188,20 +235,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="heart">💖</div>
   <div class="heart">💘</div>
 
-  <div class="letter">
-    <h2>Gửi Phương Anh</h2>
-    <p>
-      Có một người luôn ở trong tim tớ.
-      Cậu là Phương Anh – người đã khiến tớ trưởng thành hơn từng ngày.
-      Dù tương lai có ra sao, tớ vẫn luôn biết ơn vì tất cả.
-      Vì cậu mà tớ đã học được rất nhiều điều.
-      Phương Anh à! Tớ yêu cậu rất nhiều!
-      Dù sao thì, chúc cậu một ngày sinh nhật đáng nhớ nhé!
-      Tớ chúc cậu luôn học giỏi và thành công trong tương lai.
-      Xuân Thành tớ đây sẽ luôn yêu thương và bảo vệ cậu.
-      Vì cậu - tớ nguyện làm tất cả.💕💕💕(❁´◡`❁)
-    </p>
-  </div>
+  
 <!-- Lời mời đặc biệt -->
 <div id="special-invite" onclick="showInvitePopup()" style="cursor: pointer; text-align: center; margin-top: 30px;">
   <div style="font-size: 50px;">🎟️</div>
@@ -224,11 +258,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <button onclick="closeInvitePopup()" style="margin-top:20px; padding:10px 20px; background:#ff69b4; color:white; border:none; border-radius:8px; cursor:pointer;">OK 🥺</button>
   </div>
 </div>
-<div style="text-align: center; margin-top: 20px;">
-  <div id="greeting-message" style="font-size: 20px; color: #ff66a3; font-weight: bold; margin-bottom: 10px;"></div>
-  <img src="phuonganhdangyeu.png" alt="Ảnh Phương Anh" style="width: 220px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-</div>
+<div class="top-container">
+  <div class="photo-box">
+    <div id="greeting-message" class="greeting-text"></div>
+    <img src="phuonganhdangyeu.png" alt="Phương Anh" class="pa-image">
+  </div>
 
+  <div class="letter">
+    <h2>Gửi Phương Anh</h2>
+    <p>
+      Có một người luôn ở trong tim tớ.
+      Cậu là Phương Anh – người đã khiến tớ trưởng thành hơn từng ngày.
+      Dù tương lai có ra sao, tớ vẫn luôn biết ơn vì tất cả.
+      Vì cậu mà tớ đã học được rất nhiều điều.
+      Phương Anh à! Tớ yêu cậu rất nhiều!
+      Dù sao thì, chúc cậu một ngày sinh nhật đáng nhớ nhé!
+      Tớ chúc cậu luôn học giỏi và thành công trong tương lai.
+      Xuân Thành tớ đây sẽ luôn yêu thương và bảo vệ cậu.
+      Vì cậu - tớ nguyện làm tất cả.💕💕💕(❁´◡`❁)
+    </p>
+  </div>
 <button class="music-toggle" onclick="toggleMusic()">🔊 Bật nhạc</button>
 
 <audio id="bg-music" autoplay loop>
@@ -622,7 +671,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     messageBox.innerText = message;
   }
-
+  document.addEventListener("DOMContentLoaded", showGreeting);
   // Gọi hàm khi trang được tải
   window.onload = showGreeting;
 </script>
