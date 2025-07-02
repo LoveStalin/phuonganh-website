@@ -184,7 +184,35 @@
   color: #ff66a3;
   font-weight: bold;
 }
-
+  .popup-hidden {
+    display: none;
+  }
+  #heart-photo-popup {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+  }
+  .popup-box {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    text-align: center;
+    position: relative;
+    max-width: 90%;
+    box-shadow: 0 0 12px rgba(0,0,0,0.3);
+  }
+  .close-btn {
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 20px;
+    color: #e75480;
+    cursor: pointer;
+  }
 /* Responsive trên điện thoại */
 @media (max-width: 768px) {
   .top-container {
@@ -202,7 +230,7 @@
     font-size: 16px;
   }
 }
-  </style>
+   </style>
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LGJH4TYT65"></script>
 <script>
@@ -221,7 +249,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 </head>
 <body>
-<body>
+  <!-- Icon quyển sách ở góc trên bên phải -->
+<div id="plan-icon" onclick="togglePlan()" title="Kế hoạch thay đổi bản thân 📖">
+  📖
+</div>
+
+<!-- Popup kế hoạch -->
+<div id="plan-popup" class="popup-plan">
+  <h3>Kế hoạch thay đổi bản thân vì Phương Anh 💕</h3>
+  <ul>
+    <li><span class="dot yellow"></span> Giảm cân cấp tốc – <b>Đang trong quá trình</b></li>
+    <li><span class="dot yellow"></span> Nâng cao học thức – <b>Đang trong quá trình</b></li>
+    <li><span class="dot yellow"></span> Thể thao hoá bản thân – <b>Đang trong quá trình</b></li>
+    <li><span class="dot white"></span> Thay đổi tính cách – <b>Đang chờ</b></li>
+    <li class="heart-photo-trigger" onclick="toggleHeartPhoto()">💝</li>
+  </ul>
+</div>
 <!-- 💘 KHÓA BẢO MẬT CHO PHƯƠNG ANH 💘 -->
 <div id="lock-screen" style="position:fixed; top:0; left:0; width:100%; height:100vh; background:#fff0f5; z-index:99999; display:flex; flex-direction:column; justify-content:center; align-items:center;">
   <h2 style="color:#d6336c;">🔒 Web dành riêng cho người đặc biệt</h2>
@@ -296,11 +339,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="popup-content" id="popup-page-1">
     <h2>🎉 Chào Mừng Phương Anh 🎉</h2>
     <p>Xuân Thành đây!<br>Chúc cậu có ngày sinh nhật thật hạnh phúc và đáng nhớ nha 💖<br>
-      Tớ đã dành cả ngày lẫn  chỉ để làm trang web nhỏ này cho cậu đó nha hihi<br>
+      Tớ đã dành cả ngày lẫn đêm chỉ để làm trang web nhỏ này cho cậu đó nha hihi<br>
       Không phải vì tớ rảnh đâu, mà là vì…<br>
       Tớ muốn làm ra một thứ gì đó chỉ dành riêng cho Phương Anh thôi (｡♥‿♥｡)<br>
       Và tớ cũng mong cậu hiểu rằng...<br>
-      Tớ yêu thương cậu đến nhường nào,cũng như chuyện...Phương Anh đặc biết đến nhường nào💕💕</p>
+      Tớ yêu thương cậu đến nhường nào,cũng như chuyện...Phương Anh đặc biệt như thế nào💕💕<br>
+      P/S:Lâu lâu tớ hay để ghi chú ở trên messenger chỉ mình cậu xem được,tớ không biết cậu có để ý chúng không...<br>
+    </p>
     <button onclick="showNextPopupPage()">Tiếp ➤</button>
     <div class="heart-floating">❤️</div>
   </div>
@@ -314,7 +359,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       Trang Web này bao gồm lời mà tớ muốn nói với cậu,<br>
       có nhạc Doubt (tớ không biết nên dùng nhạc nào 😁)<br>
       và một đoạn ghi âm 3p của tớ dành cho cậu.<br>
-      Tớ chỉ có thể làm được như thế này trong 2 ngày thui, cậu thông cảm nha 😭🙏
+      Tớ chỉ có thể làm được như thế này trong mấy ngày qua thui, cậu thông cảm nha 😭🙏
     </p>
     <button onclick="acceptLove()">Ogeeee 🥺</button>
     <button onclick="declineLove()">Không 😏</button>
@@ -368,6 +413,101 @@ window.addEventListener("load", typeLetter);
 </script>
 
 <style>
+  #plan-icon {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+.popup-plan {
+  display: none;
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  background: #fff0f5;
+  border: 2px solid #ffaec9;
+  padding: 20px;
+  border-radius: 15px;
+  z-index: 9999;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+}
+
+.popup-plan ul {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+}
+
+.popup-plan li {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.dot.yellow { background: gold; }
+.dot.white { background: white; border: 1px solid #aaa; }
+.popup-hidden {
+  display: none;
+}
+
+#heart-photo-popup {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.6);
+  display: none; /* Mặc định ẩn */
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.popup-box {
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+.popup-box img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #ff69b4;
+  font-weight: bold;
+  z-index: 10001;
+}
+
+.heart-photo-trigger {
+  cursor: pointer;
+  font-size: 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+.heart-photo-trigger:hover {
+  transform: scale(1.2);
+}
 /* 💖 CSS cho mưa tim */
 .rain-heart {
   position: fixed;
@@ -583,8 +723,8 @@ window.onload = function () {
   window.scrollTo({ top: document.getElementById("comment-list").offsetTop, behavior: "smooth" });
   document.getElementById("popup").style.display = "flex";
 };
-const formattedMessage = message.replace(/\n/g, "<br>");
-commentBox.innerHTML = `<strong>${name}</strong><br>${formattedMessage}`;
+const formattedMessage = comment.message.replace(/\n/g, "<br>");
+commentBox.innerHTML = `<strong>${comment.name}</strong><br>${formattedMessage}`;
 </script>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P579482N"
@@ -676,6 +816,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   document.addEventListener("DOMContentLoaded", showGreeting);
   // Gọi hàm khi trang được tải
   window.onload = showGreeting;
+  function togglePlan() {
+  const popup = document.getElementById("plan-popup");
+  popup.style.display = popup.style.display === "block" ? "none" : "block";
+}
+  function toggleHeartPhoto() {
+  const popup = document.getElementById("heart-photo-popup");
+  const isHidden = popup.style.display === "none" || popup.classList.contains("popup-hidden");
+
+  if (isHidden) {
+    popup.style.display = "flex";
+    popup.classList.remove("popup-hidden");
+  } else {
+    popup.style.display = "none";
+    popup.classList.add("popup-hidden");
+  }
+}
 </script>
+<!-- Popup ảnh 💝 -->
+<div id="heart-photo-popup" class="popup-hidden">
+  <div class="popup-box">
+    <span class="close-btn" onclick="toggleHeartPhoto()">✖</span>
+    <img src = "images/ngamnhinPhuongAnh.jpg" alt="Ngắm nhìn Phương Anh từ xa" style="max-width:100%; border-radius:10px;">
+    <p style="margin-top : 10px;" >📷 Nhớ mãi khoảnh khắc ngồi nhìn Phương Anh từ xa…</p>
+  </div>
+</div>
 </body>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 </html>
