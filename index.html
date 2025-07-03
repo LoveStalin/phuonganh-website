@@ -294,7 +294,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <p style="margin-top: 10px; font-size: 16px;">
       Phương Anh à!<br>Tớ muốn mời cậu đi xem phim với tớ...<br><br>
       Bộ phim và thời gian xem phim(sau ngày 09/07) thì sẽ phụ thuộc vào sự lựa chọn của cậu nha~~~<br>
-      Còn tớ thì sẽ lo chuyện tiền nong,vé xem phim,các khoản tiền phụ,...(Bao gồm cả việc chiều chuộng cậu hhhhh) <br><br>
       Nếu cậu đồng ý, hãy gửi lời nhắn nhủ ở website này nha!<br>
       Nếu cậu từ chối, cậu có thể gửi lời lên website này, hoặc không gửi nếu cậu ngại.<br><br>
       <strong>09/07</strong> tớ sẽ lên web kiểm tra để xem câu trả lời của cậu ạ!<br>
@@ -307,9 +306,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="photo-box">
     <div id="greeting-message" class="greeting-text"></div>
     <img src="phuonganhdangyeu.png" alt="Phương Anh" class="pa-image">
-  </div>
 
-  <div class="letter">
+</div>
+  <div class="letter sparkle-container">
     <h2>Gửi Phương Anh</h2>
     <p>
       Có một người luôn ở trong tim tớ.
@@ -323,6 +322,33 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       Vì cậu - tớ nguyện làm tất cả.💕💕💕(❁´◡`❁)
     </p>
   </div>
+  <div id="wish-box" style="margin-top: 20px; text-align: center;">
+  <button onclick="toggleWish()" style="padding: 10px 20px; background-color: #ffb6c1; border: none; border-radius: 20px; color: white; font-size: 16px; cursor: pointer;">
+    🌠 Nếu được ước một điều...
+  </button>
+  <p id="wish-text" style="display: none; margin-top: 10px; font-style: italic; color: #d63384;">
+    Tớ ước gì... Tớ có thể được yêu thương cậu, được nắm tay và ôm cậu , không phải trong giấc mơ nữa, mà là giữa đời thật... 💭
+  </p>
+</div>
+<!-- Icon 🎂 và dòng chú thích -->
+<div id="video-hint" style="cursor: pointer; position: fixed; top: 100px; left: 20px; text-align: center; z-index: 1000;">
+  <div style="font-size: 30px;">🎂</div>
+  <div style="color: #d6336c; font-size: 14px; font-weight: bold; line-height: 1.4;">
+    Video này tớ nghĩ cậu không nên xem<br>
+    (Nhưng nếu cậu muốn thì cứ xem thui nha 🥹)
+  </div>
+</div>
+
+<!-- Popup video -->
+<div id="video-popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0,0,0,0.7); z-index: 9999; justify-content: center; align-items: center;">
+  <div style="position: relative; background: white; padding: 20px; border-radius: 20px; max-width: 90%; width: 400px; box-shadow: 0 0 15px rgba(0,0,0,0.4);">
+    <span id="close-video-btn" style="position: absolute; top: 10px; right: 15px; font-size: 28px; color: #ff69b4; font-weight: bold; cursor: pointer;">✖</span>
+    <video controls style="width: 100%; border-radius: 15px;">
+      <source src="videos/vidchucmung.mp4" type="video/mp4">
+      Trình duyệt của bạn không hỗ trợ video này.
+    </video>
+  </div>
+</div>
 <button class="music-toggle" onclick="toggleMusic()">🔊 Bật nhạc</button>
 
 <audio id="bg-music" autoplay loop>
@@ -546,6 +572,38 @@ window.addEventListener("load", typeLetter);
   border-radius: 20px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   font-size: 14px;
+}
+/* ✨ Hiệu ứng lấp lánh quanh bức thư */
+.sparkle-container {
+  position: relative;
+  animation: sparkleAnimation 2s infinite ease-in-out;
+  box-shadow: 0 0 15px #ffb6c1, 0 0 30px #ff69b4;
+  border-radius: 12px;
+}
+
+@keyframes sparkleAnimation {
+  0% {
+    box-shadow: 0 0 5px #ffb6c1, 0 0 10px #ff69b4;
+  }
+  50% {
+    box-shadow: 0 0 15px #ffc0cb, 0 0 30px #ff69b4;
+  }
+  100% {
+    box-shadow: 0 0 5px #ffb6c1, 0 0 10px #ff69b4;
+  }
+}
+.heartbeat-heart {
+  position: absolute;
+  font-size: 22px;
+  animation: heartbeat 1.5s infinite;
+  pointer-events: none;
+  color: #ff6fa2;
+  z-index: 5;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.5); }
 }
 </style>
 <script>
@@ -868,7 +926,37 @@ function playAudio3() {
   const audio = document.getElementById("audio3");
   audio.play();
 }
+function toggleWish() {
+  const wish = document.getElementById("wish-text");
+  wish.style.display = (wish.style.display === "none") ? "block" : "none";
+}
+  function createHeartbeatHearts() {
+    const photoBox = document.querySelector('.photo-box');
+    const positions = [
+      { top: '-10px', left: '-10px' },
+      { top: '-10px', right: '-10px' },
+      { bottom: '-10px', left: '-10px' },
+      { bottom: '-10px', right: '-10px' },
+      { top: '50%', left: '-25px', transform: 'translateY(-50%)' },
+      { top: '50%', right: '-25px', transform: 'translateY(-50%)' }
+    ];
 
+    positions.forEach((pos, i) => {
+      const heart = document.createElement("div");
+      heart.className = "heartbeat-heart";
+      heart.textContent = ["❤️", "💗", "💓", "💖", "💕", "💘"][i % 6];
+
+      Object.assign(heart.style, pos);
+      if (pos.transform) heart.style.transform = pos.transform;
+
+      photoBox.appendChild(heart);
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", createHeartbeatHearts);
+  function showBirthdayVideo() {
+    document.getElementById("birthday-video-popup").style.display = "flex";
+  }
 </script>
 <!-- Popup ảnh 💝 -->
 <div id="heart-photo-popup" class="popup-hidden">
@@ -904,5 +992,21 @@ function playAudio3() {
   Tớ không muốn lãng phí những thứ mà tớ đã cố gắng làm nên.<br>
   Vì thế...Mong cậu cho phép tớ được theo đuổi cậu...
 </div>
+<script>
+  function toggleVideo() {
+    const popup = document.getElementById("video-popup");
+    popup.style.display = popup.style.display === "flex" ? "none" : "flex";
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const hintBtn = document.getElementById("video-hint");
+    const closeBtn = document.getElementById("close-video-btn");
+
+    if (hintBtn && closeBtn) {
+      hintBtn.addEventListener("click", toggleVideo);
+      closeBtn.addEventListener("click", toggleVideo);
+    }
+  });
+</script>
 </body>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 </html>
