@@ -561,12 +561,23 @@ window.addEventListener("load", typeLetter);
       toggleBtn.innerText = "🔊 Bật nhạc";
     }
   }
+  // Đánh thức server trước để tránh delay gửi comment
+fetch("https://comment-cho-pa.onrender.com/comments")
+  .then(() => console.log("Server sẵn sàng"))
+  .catch(() => console.log("Đang đánh thức server..."));
+ window.onload = function () {
+  // Hiện popup đầu
+  document.getElementById("popup").style.display = "flex";
 
-  // Khi trang load, hiện popup đầu
-  window.onload = function() {
-    document.getElementById("popup").style.display = "flex";
-  };
+  // Gọi render comment
+  renderComments();
 
+  // Cuộn đến khung comment
+  window.scrollTo({ top: document.getElementById("comment-list").offsetTop, behavior: "smooth" });
+
+  // Hiện lời chào theo giờ
+  showGreeting();
+};
   function showNextPopupPage() {
     const popup1 = document.getElementById("popup");
     popup1.classList.add("fade-out");
@@ -587,10 +598,7 @@ window.addEventListener("load", typeLetter);
     document.getElementById("popup2").style.display = "none";
     document.getElementById("sorry").style.display = "flex";
   }
-  // Mở popup 1 khi trang load
-window.onload = function () {
-  document.getElementById("popup").style.display = "flex";
-};
+ 
 
 function closePopup() {
   document.getElementById("popup").style.display = "none";
@@ -736,12 +744,8 @@ function sendReply(index) {
       alert("Gửi phản hồi thất bại 😭: " + err.message);
     });
 }
-// Gọi khi load trang
-window.onload = function () {
-  renderComments();
-  window.scrollTo({ top: document.getElementById("comment-list").offsetTop, behavior: "smooth" });
   document.getElementById("popup").style.display = "flex";
-};
+
 const formattedMessage = comment.message.replace(/\n/g, "<br>");
 commentBox.innerHTML = `<strong>${comment.name}</strong><br>${formattedMessage}`;
 </script>
@@ -843,8 +847,7 @@ document.getElementById("day-counter").innerText = `Đã ${daysPassed} ngày k�
     messageBox.innerText = message;
   }
   document.addEventListener("DOMContentLoaded", showGreeting);
-  // Gọi hàm khi trang được tải
-  window.onload = showGreeting;
+  
   function togglePlan() {
   const popup = document.getElementById("plan-popup");
   popup.style.display = popup.style.display === "block" ? "none" : "block";
