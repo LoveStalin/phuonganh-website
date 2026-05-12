@@ -2,1084 +2,14 @@
 <html>
 
 <head>
-  <meta charset="UTF-8" />
-  <title>Chúc mừng sinh nhật Phương Anh</title>
-  <style>
-    :root {
-      --bg: #fff0f5;
-      --card: #ffffff;
-      --accent: #ff69b4;
-      --accent-soft: #ffaec9;
-      --text: #3a0d22;
-      --shadow: rgba(0, 0, 0, 0.15);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html,
-    body {
-      margin: 0;
-      min-height: 100%;
-      font-family: Arial, sans-serif;
-      background: radial-gradient(circle at top, #ffeaf2 0%, var(--bg) 100%);
-      color: var(--text);
-    }
-
-    body {
-      display: flex;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .page-wrapper {
-      width: min(1200px, 100%);
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      position: relative;
-    }
-
-    #lock-screen {
-      position: fixed;
-      inset: 0;
-      background: var(--bg);
-      z-index: 10000;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 16px;
-      padding: 20px;
-      text-align: center;
-    }
-
-    #lock-screen h2 {
-      margin: 0;
-      color: #d6336c;
-    }
-
-    #lock-screen input,
-    #lock-screen button {
-      width: min(320px, 100%);
-    }
-
-    #lock-screen input {
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid #d8b0c4;
-    }
-
-    #lock-screen button {
-      padding: 12px;
-      border: none;
-      border-radius: 10px;
-      background: var(--accent);
-      color: #fff;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    #top-right-tools {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      z-index: 10001;
-    }
-
-    #plan-icon {
-      font-size: 30px;
-      cursor: pointer;
-    }
-
-    .love-counter-text {
-      background: #ffe4ec;
-      color: #d63384;
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: bold;
-      box-shadow: 0 2px 8px var(--shadow);
-    }
-
-    .popup-plan {
-      display: none;
-      position: fixed;
-      top: 80px;
-      right: 20px;
-      width: min(320px, calc(100% - 40px));
-      background: var(--bg);
-      border: 2px solid var(--accent-soft);
-      border-radius: 18px;
-      padding: 22px;
-      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18);
-      z-index: 10002;
-    }
-
-    .popup-plan h3 {
-      margin-top: 0;
-      color: var(--accent);
-    }
-
-    .popup-plan ul {
-      padding: 0;
-      margin: 0;
-      list-style: none;
-    }
-
-    .popup-plan li {
-      margin-bottom: 12px;
-      font-size: 15px;
-      line-height: 1.6;
-    }
-
-    .dot {
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      margin-right: 10px;
-      vertical-align: middle;
-    }
-
-    .green {
-      background: green;
-    }
-
-    .black {
-      background: black;
-    }
-
-    .heart-photo-trigger {
-      display: inline-block;
-      cursor: pointer;
-      font-size: 22px;
-      transition: transform 0.25s ease;
-    }
-
-    .heart-photo-trigger:hover {
-      transform: scale(1.05);
-    }
-
-    .popup-overlay,
-    #heart-photo-popup {
-      position: fixed;
-      inset: 0;
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 10005;
-      background: rgba(0, 0, 0, 0.6);
-    }
-
-    .popup-content,
-    .popup-box {
-      background: #fff;
-      border-radius: 22px;
-      padding: 28px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
-      max-width: 420px;
-      width: 100%;
-      position: relative;
-    }
-
-    .popup-content button,
-    .popup-box button,
-    .music-toggle,
-    .wish-button,
-    .comment-section button,
-    .action-button {
-      padding: 12px 18px;
-      border: none;
-      border-radius: 999px;
-      background: var(--accent);
-      color: #fff;
-      cursor: pointer;
-      font-size: 15px;
-      font-weight: bold;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 12px;
-      right: 14px;
-      font-size: 24px;
-      color: var(--accent);
-      cursor: pointer;
-    }
-
-    .hero {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      justify-content: center;
-      align-items: flex-start;
-    }
-
-    .top-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 30px;
-      margin-bottom: 30px;
-    }
-
-    .right-column {
-      display: flex;
-      flex-direction: column;
-      flex: 1 1 420px;
-      min-width: 280px;
-      gap: 15px;
-    }
-
-    .buttons-row {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .buttons-row button {
-      flex: 1 1 auto;
-      min-width: 140px;
-    }
-
-    .photo-box,
-    .letter-card,
-    .box-card {
-      background: var(--card);
-      border: 2px solid var(--accent-soft);
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    }
-
-    .photo-box {
-      flex: 1 1 320px;
-      min-width: 280px;
-      position: relative;
-      text-align: center;
-      padding: 18px;
-    }
-
-    .photo-box img {
-      width: 100%;
-      height: auto;
-      border-radius: 18px;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
-    }
-
-    .pa-image {
-      height: auto;
-      width: 100%;
-      border-radius: 18px;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
-    }
-
-    .greeting-text {
-      position: absolute;
-      top: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(255, 255, 255, 0.95);
-      padding: 10px 16px;
-      border-radius: 999px;
-      color: var(--accent);
-      font-weight: bold;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-    }
-
-    .letter-card {
-      flex: 1 1 420px;
-      min-width: 280px;
-      padding: 26px;
-      animation: sparkleAnimation 4s infinite ease-in-out;
-    }
-
-    .letter {
-      background-color: #ffffff;
-      padding: 30px;
-      border: 2px solid #ffaec9;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-      max-width: 600px;
-      font-size: 18px;
-      line-height: 1.6;
-      position: relative;
-      z-index: 1;
-      animation: sparkleAnimation 4s infinite ease-in-out;
-    }
-
-    .letter.sparkle-container {
-      animation: sparkleAnimation 4s infinite ease-in-out;
-      box-shadow: 0 0 10px #ffb6c1, 0 0 20px #ff69b4;
-      border-radius: 20px;
-    }
-
-    .letter-card h2 {
-      margin-top: 0;
-      color: #d13376;
-    }
-
-    .letter h2 {
-      margin-top: 0;
-      color: #d13376;
-    }
-
-    .letter-card p {
-      line-height: 1.8;
-      margin: 16px 0 0;
-      white-space: pre-wrap;
-    }
-
-    .letter p {
-      line-height: 1.8;
-      margin: 16px 0 0;
-      white-space: pre-wrap;
-    }
-
-    .interactive-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-      align-items: stretch;
-    }
-
-    .box-card {
-      padding: 22px;
-      width: min(100%, 360px);
-      text-align: center;
-    }
-
-    .box-card p {
-      margin: 16px 0 0;
-      line-height: 1.6;
-    }
-
-    .wish-button {
-      width: 100%;
-      max-width: 320px;
-    }
-
-    #video-hint {
-      cursor: pointer;
-      text-align: center;
-      width: min(100%, 360px);
-      padding: 18px;
-      border-radius: 20px;
-      background: rgba(255, 239, 246, 0.95);
-      border: 2px solid rgba(255, 106, 152, 0.25);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-    }
-
-    #video-hint div:first-child {
-      font-size: 34px;
-    }
-
-    #video-hint p {
-      margin: 10px 0 0;
-      font-size: 14px;
-      line-height: 1.5;
-      color: #9f285c;
-      font-weight: bold;
-    }
-
-    .audio-panel {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      width: min(360px, calc(100% - 40px));
-      padding: 18px;
-      border-radius: 22px;
-      background: var(--bg);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.16);
-      z-index: 10001;
-    }
-
-    .audio-panel h4 {
-      margin: 0 0 16px;
-      color: #d63384;
-    }
-
-    .audio-item {
-      margin-bottom: 16px;
-    }
-
-    .audio-item:last-child {
-      margin-bottom: 0;
-    }
-
-    .audio-item p {
-      margin: 0 0 8px;
-      font-size: 15px;
-      font-weight: bold;
-    }
-
-    .audio-panel audio {
-      width: 100%;
-      border-radius: 12px;
-    }
-
-    #comment-section {
-      width: min(100%, 600px);
-      margin: 0 auto 120px;
-      text-align: center;
-    }
-
-    #comment-section h3 {
-      margin-bottom: 18px;
-    }
-
-    #comment-section input,
-    #comment-section textarea {
-      width: 100%;
-      border-radius: 14px;
-      border: 1px solid var(--accent-soft);
-      padding: 14px;
-      font-size: 15px;
-      outline: none;
-      resize: vertical;
-    }
-
-    #comment-section button {
-      width: min(240px, 100%);
-      margin-top: 14px;
-    }
-
-    #comment-list {
-      margin-top: 28x;
-      text-align: left;
-    }
-
-    .comment-box {
-      background: #fff0f5;
-      border: 1px solid var(--accent-soft);
-      border-radius: 16px;
-      padding: 18px;
-      margin-bottom: 14px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-    }
-
-    .comment-box strong {
-      color: #d63384;
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    .reply-button,
-    .reply-send {
-      margin-top: 12px;
-      background: #ff99c4;
-      width: auto;
-      padding: 10px 16px;
-    }
-
-    .reply-box {
-      display: none;
-      margin-top: 12px;
-    }
-
-    .reply-box input {
-      width: calc(50% - 10px);
-      margin: 5px 5px 0 0;
-      padding: 10px;
-      border: 1px solid var(--accent-soft);
-      border-radius: 12px;
-    }
-
-    .comment-section {
-      margin-top: 50px;
-      width: 100%;
-      max-width: 600px;
-      text-align: center;
-      margin: 0 auto 120px;
-    }
-
-    .comment-section input,
-    .comment-section textarea {
-      width: 100%;
-      max-width: 100%;
-      border-radius: 14px;
-      border: 1px solid var(--accent-soft);
-      padding: 14px;
-      font-size: 15px;
-      outline: none;
-      resize: vertical;
-    }
-
-    .comment-section button {
-      width: min(240px, 100%);
-      margin-top: 14px;
-    }
-
-    #comment-list {
-      margin-top: 30px;
-      text-align: left;
-    }
-
-    .audio-panel audio {
-      width: 100%;
-      height: 35px;
-      border-radius: 12px;
-    }
-
-    .heart,
-    .heart-floating,
-    .heartbeat-heart {
-      position: absolute;
-      font-size: 24px;
-      animation: float 3s infinite ease-in-out;
-      pointer-events: none;
-    }
-
-    .heart:nth-child(1) {
-      top: -10px;
-      left: -20px;
-      animation-delay: 0s;
-    }
-
-    .heart:nth-child(2) {
-      top: 20px;
-      right: -30px;
-      animation-delay: 0.5s;
-    }
-
-    .heart:nth-child(3) {
-      bottom: -10px;
-      left: 10px;
-      animation-delay: 1s;
-    }
-
-    .heart:nth-child(4) {
-      bottom: -20px;
-      right: 20px;
-      animation-delay: 1.5s;
-    }
-
-    .heart-floating {
-      top: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .heartbeat-heart {
-      font-size: 22px;
-      animation: heartbeat 1.5s infinite;
-      z-index: 1;
-    }
-
-    @keyframes float {
-
-      0%,
-      100% {
-        transform: translateY(0);
-        opacity: 1;
-      }
-
-      50% {
-        transform: translateY(-10px);
-        opacity: 0.7;
-      }
-    }
-
-    @keyframes heartbeat {
-
-      0%,
-      100% {
-        transform: scale(1);
-      }
-
-      50% {
-        transform: scale(1.4);
-      }
-    }
-
-    @keyframes sparkleAnimation {
-
-      0%,
-      100% {
-        box-shadow: 0 0 10px #ffb6c1, 0 0 20px #ff69b4;
-      }
-
-      50% {
-        box-shadow: 0 0 20px #ffc0cb, 0 0 36px #ff69b4;
-      }
-    }
-
-    .fade-out {
-      animation: fadeOut 0.6s forwards;
-    }
-
-    .fade-in {
-      animation: fadeIn 0.6s forwards;
-    }
-
-    @keyframes fadeOut {
-      from {
-        opacity: 1;
-        transform: scale(1);
-      }
-
-      to {
-        opacity: 0;
-        transform: scale(0.95);
-      }
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: scale(1.05);
-      }
-
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    #heart-photo-popup {
-      display: none;
-    }
-
-    .popup-box img {
-      width: 100%;
-      border-radius: 16px;
-    }
-
-    .rain-heart {
-      position: fixed;
-      top: 0;
-      z-index: 0;
-      animation-name: dropHeart;
-      animation-timing-function: linear;
-      animation-iteration-count: infinite;
-    }
-
-    @keyframes dropHeart {
-      0% {
-        transform: translateY(0);
-        opacity: 1;
-      }
-
-      100% {
-        transform: translateY(100vh);
-        opacity: 0;
-      }
-    }
-
-    #final-message {
-      display: none;
-      position: fixed;
-      bottom: 120px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #ffe4ec;
-      padding: 16px 18px;
-      border-radius: 22px;
-      box-shadow: 0 8px 26px rgba(0, 0, 0, 0.14);
-      color: #d63384;
-      font-weight: bold;
-      font-size: 14px;
-      max-width: 320px;
-      z-index: 10000;
-      text-align: left;
-      line-height: 1.6;
-    }
-
-    @media (max-width: 860px) {
-      .hero {
-        flex-direction: column;
-      }
-
-      .audio-panel {
-        position: static;
-        width: 100%;
-        margin: 0 auto;
-      }
-
-      #top-right-tools {
-        right: 10px;
-        top: 10px;
-      }
-
-      .popup-plan {
-        width: calc(100% - 40px);
-        right: 10px;
-        top: 70px;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .reply-box input {
-        width: 100%;
-        margin: 5px 0;
-      }
-    }
-
-    /* Screenshot layout override */
-    html,
-    body {
-      min-width: 1280px;
-      min-height: 100vh;
-      overflow-x: auto;
-    }
-
-    body {
-      display: block;
-      padding: 0;
-      background: #fff1f7;
-      color: #000;
-    }
-
-    #lock-screen {
-      display: none !important;
-    }
-
-    .container {
-      position: relative;
-      width: 100%;
-      min-height: 940px;
-      padding-top: 108px;
-    }
-
-    #top-right-tools {
-      top: 22px;
-      right: 40px;
-      gap: 8px;
-    }
-
-    #plan-icon {
-      order: 2;
-      font-size: 28px;
-      line-height: 1;
-      text-shadow: 1px 1px 0 #5aa7d7;
-    }
-
-    .love-counter-text {
-      order: 1;
-      background: #ffeaf2;
-      color: #e62d80;
-      padding: 8px 14px;
-      border-radius: 999px;
-      box-shadow: 0 2px 12px rgba(245, 112, 167, 0.18);
-      max-width: 340px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    #special-invite {
-      position: fixed;
-      top: 16px;
-      left: 0;
-      z-index: 1000;
-      margin-top: 0 !important;
-      text-align: left !important;
-    }
-
-    #special-invite > div:first-child {
-      width: 160px;
-      text-align: center;
-      font-size: 40px !important;
-      line-height: 1;
-      filter: drop-shadow(2px 2px 0 #000);
-    }
-
-    #special-invite > div:last-child {
-      font-size: 21px !important;
-      color: #ff5b9a !important;
-    }
-
-    #video-hint {
-      position: fixed !important;
-      top: 104px !important;
-      left: 0 !important;
-      width: 350px !important;
-      padding: 0 20px !important;
-      background: transparent !important;
-      border: 0 !important;
-      box-shadow: none !important;
-      z-index: 1000 !important;
-    }
-
-    #video-hint div:first-child {
-      font-size: 34px !important;
-      line-height: 1 !important;
-    }
-
-    #video-hint div:last-child,
-    #video-hint p {
-      color: #e62d80 !important;
-      font-size: 14px !important;
-      font-weight: 700 !important;
-      line-height: 1.45 !important;
-    }
-
-    .top-container {
-      display: grid;
-      grid-template-columns: 600px 460px 410px;
-      column-gap: 32px;
-      align-items: start;
-      justify-content: center;
-      margin: 0 auto;
-      padding: 0 28px 30px;
-    }
-
-    .photo-box {
-      grid-column: 1;
-      width: 600px;
-      height: 405px;
-      min-width: 0;
-      margin-top: 0;
-      padding: 0;
-      border: 0;
-      border-radius: 0;
-      background: transparent;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.22);
-      overflow: visible;
-    }
-
-    .photo-box img,
-    .pa-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      border-radius: 0;
-      box-shadow: none;
-      display: block;
-    }
-
-    .greeting-text {
-      top: -54px;
-      left: 50%;
-      width: 430px;
-      padding: 0;
-      background: transparent;
-      border-radius: 0;
-      box-shadow: none;
-      color: #ff5b9a;
-      font-size: 18px;
-      line-height: 1.4;
-      text-align: center;
-      z-index: 5;
-    }
-
-    .right-column {
-      display: contents;
-    }
-
-    .buttons-row {
-      grid-column: 3;
-      grid-row: 1;
-      display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
-      gap: 28px;
-      padding-top: 20px;
-    }
-
-    .buttons-row button,
-    .wish-btn,
-    .music-toggle {
-      flex: 0 0 auto;
-      min-width: auto !important;
-      padding: 12px 24px !important;
-      border-radius: 999px !important;
-      background: #ffabc0 !important;
-      color: #fff !important;
-      border: 0 !important;
-      box-shadow: none !important;
-      font-size: 16px !important;
-      font-weight: 500 !important;
-      line-height: 1 !important;
-    }
-
-    .music-toggle {
-      padding-inline: 22px !important;
-    }
-
-    .letter {
-      grid-column: 2;
-      grid-row: 1;
-      width: 460px;
-      min-height: 426px;
-      max-width: none;
-      margin: 0;
-      padding: 54px 30px 34px;
-      border: 1px solid #ff8ab7;
-      border-radius: 9px;
-      background: #fff;
-      color: #000;
-      box-shadow: 0 0 10px #ffb6c1, 0 0 24px #ff69b4;
-      animation: sparkleAnimation 4s infinite ease-in-out;
-    }
-
-    .letter h2 {
-      margin: 0 0 28px;
-      color: #000;
-      font-size: 29px;
-      line-height: 1.1;
-    }
-
-    .letter p {
-      margin: 0;
-      color: #000;
-      font-size: 18px;
-      line-height: 1.6;
-      white-space: normal;
-    }
-
-    #wish-text {
-      color: #d63384 !important;
-      margin-top: 16px !important;
-    }
-
-    #comment-section,
-    .comment-section {
-      grid-column: 2;
-      grid-row: 2;
-      width: 532px;
-      max-width: none;
-      margin: 100px 0 120px -114px;
-      text-align: center;
-    }
-
-    #comment-section h3,
-    .comment-section h3 {
-      margin: 0 0 18px;
-      color: #000;
-      font-size: 20px;
-      line-height: 1.25;
-    }
-
-    #comment-section input,
-    #comment-section textarea,
-    .comment-section input,
-    .comment-section textarea {
-      border: 1px solid #ff8ab7;
-      border-radius: 9px;
-      background: #fff;
-      padding: 10px 12px;
-      color: #000;
-      font-size: 13px;
-    }
-
-    #comment-section textarea,
-    .comment-section textarea {
-      margin-top: 10px;
-      height: 82px;
-    }
-
-    #comment-section button,
-    .comment-section button {
-      width: 86px;
-      padding: 11px 14px;
-      margin-top: 14px;
-      border-radius: 999px;
-      background: #ff69b4;
-      font-size: 14px;
-    }
-
-    #comment-list {
-      margin-top: 28px;
-      text-align: center;
-      color: #000;
-    }
-
-    .audio-panel {
-      right: 36px;
-      bottom: 20px;
-      width: 390px;
-      padding: 16px 15px 18px;
-      border-radius: 14px;
-      background: #fff0f5;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.16);
-      color: #000;
-    }
-
-    .audio-panel h4 {
-      margin: 0 0 12px;
-      color: #d63384;
-      font-size: 16px;
-    }
-
-    .audio-panel p {
-      margin: 7px 0;
-      color: #000;
-      font-size: 15px;
-      line-height: 1.15;
-    }
-
-    .audio-panel audio {
-      width: 100%;
-      height: 35px;
-    }
-
-    .rain-heart,
-    .heart,
-    .heart-floating,
-    .heartbeat-heart {
-      z-index: 2;
-    }
-
-    .popup-overlay,
-    #heart-photo-popup {
-      z-index: 10005;
-    }
-
-    @media (max-width: 1280px) {
-      html,
-      body {
-        min-width: 0;
-      }
-
-      .container {
-        padding: 90px 16px 30px;
-      }
-
-      .top-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-inline: 0;
-      }
-
-      .photo-box,
-      .letter,
-      #comment-section,
-      .comment-section {
-        width: min(100%, 600px);
-        margin-left: 0;
-      }
-
-      .buttons-row {
-        width: min(100%, 600px);
-        justify-content: center;
-        padding-top: 0;
-      }
-
-      .audio-panel {
-        position: static;
-        width: min(100%, 600px);
-        margin: 30px auto 0;
-      }
-    }
-  </style>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LGJH4TYT65"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QBDX8VEXC7"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
-    gtag('config', 'G-LGJH4TYT65');
+    gtag('config', 'G-QBDX8VEXC7');
   </script>
   <!-- Google Tag Manager -->
   <script>(function (w, d, s, l, i) {
@@ -1089,611 +19,169 @@
       }); var f = d.getElementsByTagName(s)[0],
         j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
           'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-P579482N');</script>
+    })(window, document, 'script', 'dataLayer', 'GTM-T7RDZ927');</script>
   <!-- End Google Tag Manager -->
+  <meta charset="UTF-8" />
+  <title>Happy Birthday Phương Anh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <!-- Icon quyển sách ở góc trên bên phải -->
-  <div id="top-right-tools">
-    <div id="plan-icon" onclick="togglePlan()" title="Kế hoạch thay đổi bản thân 📖">
-      📖
-    </div>
-    <div id="day-counter" class="love-counter-text">Đang tính ngày...</div>
-  </div>
-  <!-- Popup kế hoạch -->
-  <div id="plan-popup" class="popup-plan">
-    <h3>Kế hoạch thay đổi bản thân vì Phương Anh 💕</h3>
-    <ul>
-      <li><span class="dot green"></span> Giảm cân cấp tốc – <b>Âm thầm làm,nhưng chậm</b></li>
-      <li><span class="dot green"></span> Nâng cao học thức – <b>Học ngu vcb,cái này thì chiu roi.Cố bao nhiêu thì bấy
-          nhiêu thôi</b></li>
-      <li><span class="dot green"></span> Thể thao hoá bản thân – <b>Cố lụm huy chương vàng thôi,1 cái rồiii.Bóng rổ
-          thôi hihi</b></li>
-      <li><span class="dot black"></span> Thay đổi tính cách – <b>Sorry nhma cái này t chịu r,ko đổi đc đâuuu</b></li>
-      <li><span class="dot green"></span> Tạo bất ngờ cho Phương Anh – <b>Đang lên kế hoạch</b></li>
-      <li class="heart-photo-trigger" onclick="toggleHeartPhoto()">💝</li>
-    </ul>
-  </div>
-  <!-- 💘 KHÓA BẢO MẬT CHO PHƯƠNG ANH 💘 -->
-  <div id="lock-screen"
-    style="position:fixed; top:0; left:0; width:100%; height:100vh; background:#fff0f5; z-index:99999; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-    <h2 style="color:#d6336c;">🔒 Web dành riêng cho người đặc biệt</h2>
-    <p>Họ và Tên đầy đủ của cậu là gì? (Ví dụ: Nguyễn Xuân Thành)</p>
-    <input id="nameInput" type="text" placeholder="Nhập tên đầy đủ..."
-      style="padding: 10px; border-radius: 8px; border: 1px solid #ccc; margin-top:10px; width: 80%; max-width: 300px;">
-    <button onclick="unlockWebsite()"
-      style="margin-top:15px; padding:10px 20px; background:#ff69b4; color:white; border:none; border-radius:8px; cursor:pointer;">Mở
-      khoá</button>
-  </div>
-  <div class="container">
-    <div class="heart">❤️</div>
-    <div class="heart">💕</div>
-    <div class="heart">💖</div>
-    <div class="heart">💘</div>
-
-
-    <!-- Lời mời đặc biệt -->
-    <div id="special-invite" onclick="showInvitePopup()" style="cursor: pointer; text-align: center; margin-top: 30px;">
-      <div style="font-size: 50px;">🎟️</div>
-      <div style="font-size: 20px; color: #e75480; font-weight: bold;">Lời mời đặc biệt!</div>
-    </div>
-
-    <!-- Popup -->
-    <div id="invite-popup"
-      style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999; justify-content:center; align-items:center;">
-      <div
-        style="background:#fff0f5; padding:30px; border-radius:20px; max-width:90%; width:400px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.2);">
-        <h2 style="color:#d6336c;">🎬 Lời mời Đặc Biệt!</h2>
-        <p style="margin-top: 10px; font-size: 16px;">
-          Phương Anh à!<br>Tớ muốn mời cậu đi xem phim với tớ...<br><br>
-          Bộ phim và thời gian xem phim(sau ngày 09/07) thì sẽ phụ thuộc vào sự lựa chọn của cậu nha~~~<br>
-          Nếu cậu đồng ý, hãy gửi lời nhắn nhủ ở website này nha!<br>
-          Nếu cậu từ chối, cậu có thể gửi lời lên website này, hoặc không gửi nếu cậu ngại.<br><br>
-          <strong>09/07</strong> tớ sẽ lên web kiểm tra để xem câu trả lời của cậu ạ!<br>
-          Cảm ơn cậu rất nhiều!
-          Edit:Lời mời hết hạn.
-        </p>
-        <button onclick="closeInvitePopup()"
-          style="margin-top:20px; padding:10px 20px; background:#ff69b4; color:white; border:none; border-radius:8px; cursor:pointer;">OK
-          🥺</button>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T7RDZ927" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <canvas id="sparkleCanvas"></canvas>
+  <div id="password-screen" class="password-popup">
+    <div class="pass-box">
+      <h2>NHẬP PASS ĐI BẠN YÊU 💞</h2>
+      <div class="pass-content">
+        <img src="image/meme.jpg" alt="Cute image" class="pass-img">
+        <div class="pass-input">
+          <input type="password" id="pass-field" placeholder="•••••" maxlength="10" readonly>
+          <div class="num-pad">
+            <div class="num">1</div>
+            <div class="num">2</div>
+            <div class="num">3</div>
+            <div class="num">4</div>
+            <div class="num">5</div>
+            <div class="num">6</div>
+            <div class="num">7</div>
+            <div class="num">8</div>
+            <div class="num">9</div>
+            <div class="num ok">✔</div>
+            <div class="num">0</div>
+            <div class="num del">⌫</div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="top-container">
-      <div class="photo-box">
-        <div id="greeting-message" class="greeting-text"></div>
-        <img src="phuonganhdangyeu.png" alt="Phương Anh" class="pa-image">
+  </div>
+  <div id="app">
+    <header class="top">
+      <h1 class="title">HAPPY BIRTHDAY,ĐỖ PHẠM PHƯƠNG ANH! 🎉</h1>
+      <p class="subtitle">Một trang web nhỏ nhưng ẩn chứa trong đó biết bao tình cảm...từ người bạn vô danh.</p>
+      <div class="controls">
+        <button id="play-music" class="btn">Bật nhạc</button>
+        <button id="start-confetti" class="btn">Rải Pháo Hoa</button>
       </div>
-      <div class="right-column">
-        <div class="buttons-row">
-          <button class="wish-btn" onclick="toggleWish()"
-            style="padding: 10px 20px; background-color: #ffb6c1; border: none; border-radius: 20px; color: white; font-size: 16px; cursor: pointer;">
-            🌠 Nếu được ước một điều...
-          </button>
-          <button class="music-toggle" onclick="toggleMusic()"
-            style="padding: 10px 20px; background-color: #87ceeb; border: none; border-radius: 20px; color: white; font-size: 16px; cursor: pointer;">
-            🔊 Bật nhạc
-          </button>
+      <button id="darkModeToggle" class="dark-btn">
+        🌙
+      </button>
+      <!-- ICON CHAT -->
+      <div id="chat-toggle">💬</div>
+
+      <!-- POPUP CHAT -->
+      <div id="chat-box" class="hidden">
+        <div class="chat-header">
+          Người vô danh
+          <span id="close-chat">✖</span>
         </div>
-        <div class="letter sparkle-container">
-          <h2>Gửi Phương Anh</h2>
-          <p>
-            Có một người luôn ở trong tim tớ.
-            Cậu là Phương Anh – người đã khiến tớ trưởng thành hơn từng ngày.
-            Dù tương lai có ra sao, tớ vẫn luôn biết ơn vì tất cả.
-            Vì cậu mà tớ đã học được rất nhiều điều.
-            Phương Anh à! Tớ thương cậu rất nhiều!
-            Dù sao thì, chúc cậu một ngày sinh nhật đáng nhớ nhé!
-            Tớ chúc cậu luôn học giỏi và thành công trong tương lai.
-            Xuân Thành tớ đây sẽ luôn yêu thương và bảo vệ cậu.
-            Vì cậu - tớ nguyện làm tất cả.💕💕💕(❁´◡`❁)
+
+        <div id="chat-messages"></div>
+
+        <div class="chat-input">
+          <input id="chat-input" placeholder="Nhắn gì đó đi..." />
+          <button onclick="sendMessage()">Gửi</button>
+        </div>
+      </div>
+      <button id="enableGyroBtn">Bật nghiêng 3D</button>
+    </header>
+
+    <main>
+      <div id="secret-btn">
+        💌
+      </div>
+      <div id="secret-popup">
+        <div class="secret-box">
+          <h3>💗 Gửi Phương Anh</h3>
+          <p id="myTypingText" data-fulltext="Tớ không dám nói ra vì tớ ngại và tớ thấy bản thân chưa đáp ứng được tiêu chí của cậu
+      Nên tớ để vào đây vậy 🫩
+      Thật ra… tớ thấy Phương Anh rất đáng yêu và xinh.
+      Không cần đồng ý,từ chối,trả lời và bình luận gì cả...  
+      Tớ chỉ muốn cậu biết điều rằng...Có người đang thích thầm cậu để phát triển💕" class="secret-text">
           </p>
-          <p id="wish-text" style="display: none; margin-top: 10px; font-style: italic; color: #d63384;">
-            Tớ ước gì... Tớ có thể được yêu thương cậu, được nắm tay và ôm cậu , không phải trong giấc mơ nữa, mà là
-            giữa đời thật... 💭
-          </p>
-        </div>
-        <!-- Comment section -->
-        <div id="comment-section" class="comment-section">
-          <h3>💬 Viết lời nhắn mà Phương Anh muốn gửi tới Xuân Thành 💬</h3>
-          <input type="text" id="comment-name" class="comment-input"
-            placeholder="Tên bạn (hoặc để trống nếu ẩn danh)"><br>
-          <textarea id="comment-message" class="comment-input" rows="4"
-            placeholder="Viết lời nhắn tại đây...(Khi ấn gửi,chờ một lúc nha...chờ tầm 20s gì đó thì nhấn lần 2.Máy tớ cổ quá nên server yếu lắm huhu)"></textarea><br>
-          <button onclick="postComment()" class="comment-submit">
-            Gửi 💌
-          </button>
-
-          <div id="comment-list"></div>
+          <button id="secret-close">Đóng lại</button>
         </div>
       </div>
-      <!-- Icon 🎂 và dòng chú thích -->
-      <div id="video-hint"
-        style="cursor: pointer; position: fixed; top: 100px; left: 20px; text-align: center; z-index: 1000;">
-        <div style="font-size: 30px;">🎂</div>
-        <div style="color: #d6336c; font-size: 14px; font-weight: bold; line-height: 1.4;">
-          Video này tớ nghĩ cậu không nên xem😁😁😁<br>
-          (Nhưng nếu cậu muốn thì cứ xem thui nha 🥹)
+      <canvas id="heartCanvas"></canvas>
+      <div class="hero-right">
+        <h2>Hôm nay là ngày đặc biệt của 🥳</h2>
+        <p>Chúc cậu tuổi mới ngập tràn niềm vui, thực hiện được ước mơ và luôn cười tươi như dịp này nhé!</p>
+        <div class="gift-note">
+          <strong>Gợi ý quà:</strong> Wait for 04/07
         </div>
       </div>
+      </section>
 
-      <!-- Popup video -->
-      <div id="video-popup"
-        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0,0,0,0.7); z-index: 9999; justify-content: center; align-items: center;">
-        <div
-          style="position: relative; background: white; padding: 20px; border-radius: 20px; max-width: 90%; width: 400px; box-shadow: 0 0 15px rgba(0,0,0,0.4);">
-          <span id="close-video-btn"
-            style="position: absolute; top: 10px; right: 15px; font-size: 28px; color: #ff69b4; font-weight: bold; cursor: pointer;">✖</span>
-          <video controls style="width: 100%; border-radius: 15px;">
-            <source src="vidhatcmsnPa.mp4" type="video/mp4">
-            Trình duyệt của bạn không hỗ trợ video này.
-          </video>
+      <section id="messages" class="card">
+        <h3>Thông điệp từ Người Bí Ẩn</h3>
+        <div id="msgs" class="msgs">
+          <!-- sample messages -->
+          <div class="msg">Chúc mừng sinh nhật Phương Anh! Mong những điều tốt đẹp nhất sẽ đến với cậu 💫</div>
+          <div class="msg">Luôn tươi, luôn chill, success trong mọi thứ nhé 🫶</div>
+          <div class="msg">Và sẽ mãi là ngoan xinh yêu trong lòng tớ-một người vô danh.</div>
         </div>
-      </div>
-
-      <audio id="bg-music" autoplay loop>
-        <source src="audio/Doubt.mp3" type="audio/mp3">
-      </audio>
-
-      <!-- Popup trang 1 -->
-      <div id="popup" class="popup-overlay">
-        <div class="popup-content" id="popup-page-1">
-          <h2>🎉 Chào Mừng Phương Anh 🎉</h2>
-          <p>Xuân Thành đây!<br>Chúc cậu có ngày sinh nhật thật hạnh phúc và đáng nhớ nha 💖<br>
-            Tớ đã dành cả ngày lẫn đêm chỉ để làm trang web nhỏ này cho cậu đó nha hihi<br>
-            Không phải vì tớ rảnh đâu, mà là vì…<br>
-            Tớ muốn làm ra một thứ gì đó chỉ dành riêng cho Phương Anh thôi (｡♥‿♥｡)<br>
-            Và tớ cũng mong cậu hiểu rằng...<br>
-            Tớ yêu thương cậu đến nhường nào,cũng như chuyện...Phương Anh đặc biệt như thế nào💕💕<br>
-            Hết hè rồi,chuẩn bị vào lớp 10.Tớ mong cậu sẽ học tập thật vui vẻ cùng tập thể 10A1 nha<br>
-            Và...sống thật hạnh phúc bên cạnh người cậu yêu<br>
-            Tớ vẫn chưa thể ngừng yêu cậu được...mong cậu cho tớ thêm một khoảng thời gian để ổn định lại<br>
-            Cậu có thể không coi tớ là bạn học cũ...nhưng tớ sẽ luôn coi cậu là người tớ thương.<br>
-            Phương Anh à..tớ vẫn yêu cậu quá nhiều...cậu có người yêu mà tớ vẫn chưa tha cho cậu 😥
-          </p>
-          <button onclick="showNextPopupPage()">Tiếp ➤</button>
-          <div class="heart-floating">❤️</div>
+      </section>
+      <section id="wishes" class="card">
+        <h3>Wishes Generator</h3>
+        <p>Bấm nút để tạo vài lời chúc cute auto.</p>
+        <div class="wish-controls">
+          <button id="gen-wish" class="btn">Tạo lời chúc</button>
+          <div id="wish-area" class="wish-area"></div>
         </div>
-      </div>
-
-      <!-- Popup trang 2 -->
-      <div id="popup2" class="popup-overlay">
-        <div class="popup-content fade-in">
-          <h3>Trang Web này chỉ dành riêng cho cậu thôii 💝</h3>
-          <p>
-            Trang Web này bao gồm lời mà tớ muốn nói với cậu,<br>
-            có nhạc Doubt (tớ không biết nên dùng nhạc nào 😁)<br>
-            và ba đoạn ghi âm của tớ dành cho cậu.<br>
-            Tớ chỉ có thể làm được như thế này trong mấy ngày qua thui, cậu thông cảm nha 😭🙏
-
-          </p>
-          <button onclick="acceptLove()">Ogeeee 🥺</button>
-          <button onclick="declineLove()">Không 😏</button>
-          <div class="heart-floating">💖</div>
+      </section>
+      <section id="countdown" class="card countdown-card">
+        <h3>🎉 Đếm ngược đến sinh nhật Phương Anh 🎂</h3>
+        <div id="countdown-timer" class="countdown-timer">
+          <div class="time-box">
+            <span id="days">00</span>
+            <p>Ngày</p>
+          </div>
+          <div class="time-box">
+            <span id="hours">00</span>
+            <p>Giờ</p>
+          </div>
+          <div class="time-box">
+            <span id="minutes">00</span>
+            <p>Phút</p>
+          </div>
+          <div class="time-box">
+            <span id="seconds">00</span>
+            <p>Giây</p>
+          </div>
         </div>
-      </div>
+        <p id="birthday-msg" class="birthday-msg"></p>
+      </section>
+      <section id="daily-wish" class="card">
+        <h3>Lời chúc mỗi ngày dành cho Phương Anh 💌</h3>
+        <p id="time-greet" class="wish-area"></p>
+      </section>
+    </main>
+    <footer>
+      <small>Được dựng lên bằng cả trái tim dành cho Phương Anh - đến từ người thích cậu, nhưng thương cậu nhiều hơn 💕
+      </small>
+  </div>
 
-      <!-- Cảm ơn -->
-      <div id="thankyou" class="popup-overlay">
-        <div class="popup-content fade-in">
-          <h2>Tớ cảm ơn cậu nhiều nhóoo 🥰</h2>
-          <div class="heart-floating">💘</div>
-        </div>
-      </div>
-
-      <!-- Xin lỗi -->
-      <div id="sorry" class="popup-overlay">
-        <div class="popup-content fade-in">
-          <h2>Cho tớ xin lỗi cậu nhiều ạ 😔</h2>
-          <div class="heart-floating">💔</div>
-        </div>
-      </div>
-      <!-- 👇 Thêm đoạn này vào cuối <body>, trước </body> -->
-      <script>
-        function createRainHearts() {
-          const numHearts = 50;
-          for (let i = 0; i < numHearts; i++) {
-            const heart = document.createElement('div');
-            heart.className = 'rain-heart';
-            heart.innerText = '💖';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = 2 + Math.random() * 3 + 's';
-            heart.style.fontSize = 12 + Math.random() * 24 + 'px';
-            heart.style.top = Math.random() * -100 + 'px';
-            document.body.appendChild(heart);
-          }
-        }
-
-        function typeLetter() {
-          const letter = document.querySelector('.letter p');
-          if (!letter) return;
-          const fullText = letter.textContent;
-          letter.textContent = '';
-          let position = 0;
-
-          function step() {
-            if (position < fullText.length) {
-              letter.textContent += fullText.charAt(position);
-              position += 1;
-              setTimeout(step, 40);
-            }
-          }
-
-          step();
-        }
-
-        function toggleMusic() {
-          const bgMusic = document.getElementById('bg-music');
-          const toggleBtn = document.querySelector('.music-toggle');
-
-          if (!bgMusic || !toggleBtn) return;
-          if (bgMusic.paused) {
-            bgMusic.play();
-            toggleBtn.innerText = '🔈 Tắt nhạc';
-          } else {
-            bgMusic.pause();
-            toggleBtn.innerText = '🔊 Bật nhạc';
-          }
-        }
-
-        function togglePlan() {
-          const popup = document.getElementById('plan-popup');
-          if (!popup) return;
-          popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
-        }
-
-        function toggleHeartPhoto() {
-          const popup = document.getElementById('heart-photo-popup');
-          if (!popup) return;
-          const isHidden = popup.style.display === 'none' || popup.classList.contains('popup-hidden');
-          popup.style.display = isHidden ? 'flex' : 'none';
-          popup.classList.toggle('popup-hidden', !isHidden);
-        }
-
-        function toggleWish() {
-          const wish = document.getElementById('wish-text');
-          if (!wish) return;
-          wish.style.display = wish.style.display === 'block' ? 'none' : 'block';
-        }
-
-        function showInvitePopup() {
-          const popup = document.getElementById('invite-popup');
-          if (popup) popup.style.display = 'flex';
-        }
-
-        function closeInvitePopup() {
-          const popup = document.getElementById('invite-popup');
-          if (popup) popup.style.display = 'none';
-        }
-
-        function toggleVideo() {
-          const popup = document.getElementById('video-popup');
-          if (!popup) return;
-          popup.style.display = popup.style.display === 'flex' ? 'none' : 'flex';
-        }
-
-        function showNextPopupPage() {
-          const popup1 = document.getElementById('popup');
-          if (!popup1) return;
-          popup1.classList.add('fade-out');
-          setTimeout(() => {
-            popup1.style.display = 'none';
-            const popup2 = document.getElementById('popup2');
-            if (popup2) popup2.style.display = 'flex';
-          }, 600);
-        }
-
-        function acceptLove() {
-          const popup2 = document.getElementById('popup2');
-          const thank = document.getElementById('thankyou');
-          if (popup2) popup2.style.display = 'none';
-          if (!thank) return;
-          thank.style.display = 'flex';
-          setTimeout(() => { thank.style.display = 'none'; }, 2000);
-        }
-
-        function declineLove() {
-          const popup2 = document.getElementById('popup2');
-          const sorry = document.getElementById('sorry');
-          if (popup2) popup2.style.display = 'none';
-          if (!sorry) return;
-          sorry.style.display = 'flex';
-          setTimeout(() => { sorry.style.display = 'none'; }, 2000);
-        }
-
-        function closePopup() {
-          const popup = document.getElementById('popup');
-          const popup2 = document.getElementById('popup2');
-          if (popup) popup.style.display = 'none';
-          if (popup2) popup2.style.display = 'flex';
-        }
-
-        function unlockWebsite() {
-          const input = document.getElementById('nameInput');
-          if (!input) return;
-          const value = input.value.trim().toLowerCase();
-          const correctName = 'đỗ phạm phương anh';
-          if (value === correctName) {
-            const lock = document.getElementById('lock-screen');
-            if (lock) lock.style.display = 'none';
-          } else {
-            alert('Địt mẹ, cút ngay khỏi web của tao! Web này chỉ dành cho người đặc biệt!');
-          }
-        }
-
-        function showGreeting() {
-          const hour = new Date().getHours();
-          const messageBox = document.getElementById('greeting-message');
-          if (!messageBox) return;
-          let message = '';
-
-          if (hour >= 21 || hour < 5) {
-            message = 'Chúc Phương Anh ngủ ngon và mơ đẹp nha 💤💤💤';
-          } else if (hour < 11) {
-            message = 'Chào buổi sáng, Phương Anh đáng yêu ☀️. Không được bỏ bữa sáng đâu đấy nha!!!';
-          } else if (hour < 14) {
-            message = 'Chúc Phương Anh ăn trưa ngon miệng, ngủ trưa tý để lấy sức cho buổi chiều nha!';
-          } else if (hour < 17) {
-            message = 'Chúc Phương Anh có một buổi chiều zui zẻ nha! Có gì ngắm hoàng hôn cho yêu đời hehe!';
-          } else {
-            message = 'Chào buổi tối, Phương Anh! Bữa tối quan trọng lắm đó, nhớ ăn đấy nha!!!';
-          }
-
-          messageBox.innerText = message;
-        }
-
-        function postComment() {
-          const nameInput = document.getElementById('comment-name');
-          const messageInput = document.getElementById('comment-message');
-          if (!messageInput) return;
-
-          const name = nameInput?.value.trim() || 'Ẩn danh';
-          const message = messageInput.value.trim();
-
-          if (!message) {
-            alert('Bạn chưa nhập lời nhắn!');
-            return;
-          }
-
-          fetch('https://comment-cho-pa.onrender.com/comments', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, message })
-          })
-            .then(response => {
-              if (!response.ok) throw new Error('Gửi thất bại');
-              return response.json();
-            })
-            .then(() => {
-              if (nameInput) nameInput.value = '';
-              messageInput.value = '';
-              renderComments();
-            })
-            .catch(error => {
-              alert('Lỗi khi gửi lời nhắn 😭: ' + error.message);
-            });
-        }
-
-        function renderComments() {
-          const list = document.getElementById('comment-list');
-          if (!list) return;
-          list.innerHTML = '<p>Đang tải lời nhắn...</p>';
-
-          fetch('https://comment-cho-pa.onrender.com/comments')
-            .then(res => res.json())
-            .then(comments => {
-              list.innerHTML = '';
-              comments.forEach((comment, index) => {
-                const commentBox = document.createElement('div');
-                commentBox.className = 'comment-box';
-                commentBox.innerHTML = `
-            <strong>${comment.name}</strong>
-            <div style="margin-top: 8px;">${comment.message}</div>
-            <div id="replies-${index}"></div>
-            <button class="reply-button" type="button">💬 Trả lời</button>
-            <div id="reply-box-${index}" class="reply-box">
-              <input type="text" id="reply-name-${index}" placeholder="Tên bạn (nếu muốn)" />
-              <input type="text" id="reply-message-${index}" placeholder="Nhập lời phản hồi" />
-              <button class="reply-send" type="button">Gửi</button>
-            </div>
-          `;
-                list.appendChild(commentBox);
-
-                const replyButton = commentBox.querySelector('.reply-button');
-                const replyBox = document.getElementById(`reply-box-${index}`);
-                const replySend = commentBox.querySelector('.reply-send');
-
-                if (replyButton && replyBox) {
-                  replyButton.addEventListener('click', () => {
-                    replyBox.style.display = replyBox.style.display === 'block' ? 'none' : 'block';
-                  });
-                }
-
-                if (replySend) {
-                  replySend.addEventListener('click', () => sendReply(index));
-                }
-
-                if (comment.replies && comment.replies.length > 0) {
-                  const repliesContainer = document.getElementById(`replies-${index}`);
-                  comment.replies.forEach(reply => {
-                    const replyItem = document.createElement('div');
-                    replyItem.style.marginTop = '10px';
-                    replyItem.innerHTML = `<strong style="color:#e75480;">↳ ${reply.name}</strong>: ${reply.message}`;
-                    repliesContainer.appendChild(replyItem);
-                  });
-                }
-              });
-            })
-            .catch(err => {
-              if (list) list.innerHTML = '<p>Không thể tải lời nhắn 😢</p>';
-              console.error(err);
-            });
-        }
-
-        function sendReply(index) {
-          const nameInput = document.getElementById(`reply-name-${index}`);
-          const messageInput = document.getElementById(`reply-message-${index}`);
-          if (!messageInput) return;
-
-          const name = nameInput?.value.trim() || 'Ẩn danh';
-          const message = messageInput.value.trim();
-          if (!message) {
-            alert('Bạn chưa nhập lời phản hồi!');
-            return;
-          }
-
-          fetch(`https://comment-cho-pa.onrender.com/comments/${index}/reply`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, message })
-          })
-            .then(res => {
-              if (!res.ok) throw new Error('Không gửi được phản hồi');
-              return res.json();
-            })
-            .then(() => {
-              if (nameInput) nameInput.value = '';
-              messageInput.value = '';
-              const replyBox = document.getElementById(`reply-box-${index}`);
-              if (replyBox) replyBox.style.display = 'none';
-              renderComments();
-            })
-            .catch(err => {
-              alert('Gửi phản hồi thất bại 😭: ' + err.message);
-            });
-        }
-
-        function activateAudioEndListener() {
-          const audio3 = document.getElementById('audio-3');
-          const finalMessage = document.getElementById('final-message');
-          if (audio3 && finalMessage) {
-            audio3.addEventListener('ended', () => {
-              finalMessage.style.display = 'block';
-              finalMessage.scrollIntoView({ behavior: 'smooth' });
-            });
-          }
-        }
-
-        function updateDaysCounter() {
-          const dayCounter = document.getElementById('day-counter');
-          if (!dayCounter) return;
-          const firstLoveDate = new Date('2024-06-04');
-          const today = new Date();
-          const daysPassed = Math.floor((today - firstLoveDate) / (1000 * 60 * 60 * 24));
-          dayCounter.innerText = `Đã ${daysPassed} ngày kể từ lúc tớ công khai thích cậu... 😍`;
-        }
-
-        function initPage() {
-          createRainHearts();
-          typeLetter();
-          renderComments();
-          showGreeting();
-          activateAudioEndListener();
-          updateDaysCounter();
-          const popup = document.getElementById('popup');
-          if (popup) popup.style.display = 'flex';
-
-          const hintBtn = document.getElementById('video-hint');
-          const closeBtn = document.getElementById('close-video-btn');
-          if (hintBtn && closeBtn) {
-            hintBtn.addEventListener('click', toggleVideo);
-            closeBtn.addEventListener('click', toggleVideo);
-          }
-
-          const musicBtn = document.querySelector('.music-toggle');
-          if (musicBtn) {
-            musicBtn.addEventListener('click', toggleMusic);
-          }
-
-          const planIcon = document.getElementById('plan-icon');
-          if (planIcon) {
-            planIcon.addEventListener('click', togglePlan);
-          }
-        }
-
-        function wakeCommentServer() {
-          fetch('https://comment-cho-pa.onrender.com/comments')
-            .then(() => console.log('Server sẵn sàng'))
-            .catch(() => console.log('Đang đánh thức server...'));
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-          wakeCommentServer();
-          initPage();
-        });
-      </script>
-      <!-- Google Tag Manager (noscript) -->
-      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P579482N" height="0" width="0"
-          style="display:none;visibility:hidden"></iframe></noscript>
-      <!-- End Google Tag Manager (noscript) -->
-      <!-- 🎧 Góc phải dưới: 3 audio mở rộng -->
-      <div class="audio-panel">
-        <h4>🎧Lời tâm sự của tớ nè:</h4>
-
-        <div>
-          <p><strong>Audio 1</strong></p>
-          <audio controls>
-            <source src="audio/ghiamdanhchoPa.mp3" type="audio/mp3">
-          </audio>
-        </div>
-
-        <div>
-          <p><strong>Audio 2</strong></p>
-          <audio controls>
-            <source src="audio/ghiam2danhchoPa.mp3" type="audio/mp3">
-          </audio>
-        </div>
-
-        <div>
-          <p><strong>Audio 3</strong></p>
-          <audio id="audio-3" controls>
-            <source src="audio/ghiam3danhchoPa.mp3" type="audio/mp3">
-          </audio>
-        </div>
-        <p><strong>Tao...vẫn còn thương mày.Nhưng mày cứ coi tao là người dưng cũng được.Tao chỉ muốn được yêu mày mà
-            không ai biết,không ai can thiệp thôi.18/1/2026 </strong></p>
-      </div>
-      <!-- Popup ảnh 💝 -->
-      <div id="heart-photo-popup" class="popup-hidden">
-        <div class="popup-box">
-          <span class="close-btn" onclick="toggleHeartPhoto()">✖</span>
-          <img src="images/ngamnhinPhuongAnh.jpg" alt="Ngắm nhìn Phương Anh từ xa"
-            style="max-width:100%; border-radius:10px;">
-          <p style="margin-top : 10px;">📷 Nhớ mãi khoảnh khắc ngồi nhìn Phương Anh từ xa…</p>
-        </div>
-      </div>
-      <div id="final-message" style="
-  display: none;
-  position: fixed;
-  bottom: 100px;
-  left: 135px ;
-  transform: translateX(-50%) ;
-  background: #ffe4ec;
-  padding: 10px 20px;
-  border-radius: 20px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  color: #d63384;
-  font-weight: bold;
-  font-size: 14px;
-  z-index: 9998;
-  max-width: 250px;
-">
-        Nếu cậu đã đọc tới đây… cảm ơn vì đã không bỏ rơi trang web này.<br>
-        Tuy tớ không dám tỏ tình trực tiếp, nhưng đây là tất cả can đảm của tớ…<br>
-        Phương Anh à,kể cả chúng ta có khác lớp khi học cấp 3,tớ vẫn sẽ:<br>
-        Thầm yêu thương,trộm nhớ cậu.<br>
-        Âm thầm bảo vệ cậu.<br>
-        Không làm phiền và ảnh hưởng đến việc học và phát triển của cậu.<br>
-        Tớ đã làm hẳn cả website này rồi...<br>
-        Tớ không muốn lãng phí những thứ mà tớ đã cố gắng làm nên.<br>
-        Vì thế...Mong cậu cho phép tớ được theo đuổi cậu...<br>
-        Tớ biết cậu đã có người yêu,nhưng tớ vẫn có mong muốn...<br>
-        Được làm người yêu của cậu,làm người che chở cậu.<br>
-        Tớ vẫn còn yêu cậu,và sẽ chờ cậu...nếu cậu quyết định chọn tớ...🥺<br>
-        Cậu có thể không quan tâm đến chiếc web của tớ...<br>
-        Nhưng đây là tất cả mọi thứ đến tận đáy lòng mà tớ muốn gửi cậu<br>
-        Chiếc web này...là món quà đặc biệt-gửi cậu mãi mãi.Tớ yêu cậu💕
-      </div>
+  <!-- optional audio (YouTube embed approach or direct file). Using a short royalty-free track URL is recommended. -->
+  <audio id="bg-audio" loop source src="audio/Music.mp3" type="audio/mp3">
+    trinh duyet cua ban khong ho tro nhac nay
+  </audio>
+  <div id="settingsPanel">
+    <h3>⚙️</h3>
+    <label><input type="checkbox" id="toggleSparkle" checked> Sparkles</label>
+    <label><input type="checkbox" id="toggleGlow" checked> Glow Pulse</label>
+    <label><input type="checkbox" id="toggleGradient" checked> Gradient BG</label>
+    <label><input type="checkbox" id="toggleTrail" checked> Light Trail</label>
+    <label><input type="checkbox" id="toggleTilt" checked> 3D Tilt Cards</label>
+  </div>
+  <button id="openSettings">⚙️</button>
+  <script src="script.js"></script>
+  <script type="module" src="firebase.js"></script>
+  <script type="module" src="chat.js"></script>
 </body>
 
 </html>
